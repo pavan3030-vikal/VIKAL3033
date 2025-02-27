@@ -20,7 +20,7 @@ import { motion, MotionProps } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
-// Define Motion components with explicit typing combining Chakra props and MotionProps
+// Define Motion components with explicit typing
 const MotionImage = motion<ImageProps & MotionProps>(Image);
 const MotionButton = motion<ButtonProps & MotionProps>(Button);
 const MotionBox = motion<BoxProps & MotionProps>(Box);
@@ -85,7 +85,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     const generateDots = () => {
-      const dotCount = 100; // Adjust for density
+      const dotCount = 100;
       const newDots = [];
       for (let i = 0; i < dotCount; i++) {
         const x = Math.random() * window.innerWidth;
@@ -165,7 +165,14 @@ const LandingPage = () => {
           }}
         />
         <Container maxW="8xl" py={12} position="relative" zIndex={1}>
-          <MotionBox variants={containerVariants} initial="hidden" animate="visible" pt={16} pb={24} textAlign="center">
+          <MotionBox
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            pt={16}
+            pb={24}
+            textAlign="center"
+          >
             <MotionImage
               src="/image27.png"
               alt="VIKAL Logo"
