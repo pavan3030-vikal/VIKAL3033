@@ -21,6 +21,7 @@ import {
   Flex,
   Link,
   Image,
+  ImageProps,
   Switch,
   Modal,
   ModalOverlay,
@@ -34,13 +35,14 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon, ArrowRightIcon, CopyIcon, CheckIcon, ExternalLinkIcon, InfoIcon, AddIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import ReactMarkdown from "react-markdown";
-import { auth } from "../lib/firebase";  // Correct relative path from src/app/dashboard/
+import { auth } from "../lib/firebase";  // Correct path from src/app/dashboard/
 import { signInWithPopup, GoogleAuthProvider, signOut, User, setPersistence, browserLocalPersistence } from "firebase/auth";
 import { motion, Transition } from "framer-motion";
 import { css } from "@emotion/react";
 import { useRouter } from "next/navigation";
 
 const MotionBox = motion.create(Box);
+const MotionImage = motion<ImageProps>(Image);  // Create MotionImage by wrapping Chakra's Image
 
 interface ChatHistory {
   id: string;
@@ -331,7 +333,15 @@ const DashboardPage: React.FC = () => {
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <Image src="/image27.png" alt="VIKAL Logo" boxSize="80px" mx="auto" />
+              <MotionImage
+                src="/image27.png"
+                alt="VIKAL Logo"
+                boxSize="80px"
+                mx="auto"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              />
             </MotionBox>
             <Text
               fontSize={{ base: "3xl", md: "4xl" }}
@@ -709,7 +719,14 @@ const DashboardPage: React.FC = () => {
             <VStack align="stretch" maxW="4xl" mx="auto" spacing={6}>
               <MotionBox initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}>
                 <HStack justify="center" spacing={0}>
-                  <Image src="/image27.png" alt="VIKAL Logo" boxSize="200px" />
+                  <MotionImage
+                    src="/image27.png"
+                    alt="VIKAL Logo"
+                    boxSize="200px"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6 }}
+                  />
                   <Text fontSize="75px" color="#ffdd57" fontFamily="Orbitron, sans-serif">
                     VIKAL
                   </Text>
