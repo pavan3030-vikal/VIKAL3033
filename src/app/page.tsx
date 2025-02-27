@@ -14,14 +14,14 @@ import {
   ImageProps,
 } from "@chakra-ui/react";
 import { ChevronRightIcon, InfoIcon } from "@chakra-ui/icons";
-import { motion } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
-// Define Motion components using motion factory
-const MotionImage = motion<ImageProps>(Image);
-const MotionButton = motion(Button);
-const MotionBox = motion(Box);
+// Define MotionImage with explicit typing combining ImageProps and MotionProps
+const MotionImage = motion<ImageProps & MotionProps>(Image);
+const MotionButton = motion<ButtonProps & MotionProps>(Button);
+const MotionBox = motion<BoxProps & MotionProps>(Box);
 
 const Dot = ({ x, y }: { x: number; y: number }) => {
   return (
