@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
+// Define MotionImage with explicit typing
 const MotionImage = motion<ImageProps>(Image);
 const MotionButton = motion(Button);
 const MotionBox = motion(Box);
@@ -184,7 +185,6 @@ const LandingPage = () => {
               bgClip="text"
               fontFamily="'Cinzel', serif"
               textShadow="0 0 20px rgba(0, 196, 180, 0.5)"
-              variants={itemVariants}
             >
               VIKAL
             </Heading>
@@ -211,7 +211,8 @@ const LandingPage = () => {
               fontFamily="Inter, sans-serif"
               fontWeight="medium"
             >
-              VIKAL – AI-Powered Prep for UPSC, GATE & SSC! <ChevronRightIcon boxSize={6} color="#FF6B6B" /> Tailored Learning, Smarter Success.
+              VIKAL – AI-Powered Prep for UPSC, GATE & SSC! <ChevronRightIcon boxSize={6} color="#FF6B6B" /> Tailored
+              Learning, Smarter Success.
             </Text>
 
             <HStack spacing={6} justify="center">
@@ -274,7 +275,13 @@ const LandingPage = () => {
           <Heading as="h2" size="xl" mb={6} color="#00C4B4" fontFamily="DM Sans, sans-serif" textAlign="center">
             Discover How to Use VIKAL
           </Heading>
-          <Box maxW="800px" mx="auto" borderRadius="md" overflow="hidden" boxShadow="0 0 20px rgba(0, 196, 180, 0.2)">
+          <Box
+            maxW="800px"
+            mx="auto"
+            borderRadius="md"
+            overflow="hidden"
+            boxShadow="0 0 20px rgba(0, 196, 180, 0.2)"
+          >
             <iframe
               width="100%"
               height="100%"
@@ -315,7 +322,8 @@ const LandingPage = () => {
             opacity={0.85}
             fontFamily="Inter, sans-serif"
           >
-            VIKAL harnesses the power of AI to provide tailored solutions for your exam queries. Whether it's UPSC, GATE, or SSC, we've got you covered.
+            VIKAL harnesses the power of AI to provide tailored solutions for your exam queries. Whether it’s UPSC,
+            GATE, or SSC, we’ve got you covered.
           </Text>
 
           <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={8}>
@@ -432,7 +440,14 @@ const LandingPage = () => {
             ))}
           </Grid>
 
-          <Box mt={12} textAlign="center" py={6} borderTop="1px" borderBottom="1px" borderColor="rgba(255, 255, 255, 0.1)">
+          <Box
+            mt={12}
+            textAlign="center"
+            py={6}
+            borderTop="1px"
+            borderBottom="1px"
+            borderColor="rgba(255, 255, 255, 0.1)"
+          >
             <Text fontSize="xl" color="#E2E8F0" fontStyle="italic" fontFamily="Inter, sans-serif" opacity={0.9}>
               "Education is not preparation for life; education is life itself."
             </Text>
@@ -442,12 +457,7 @@ const LandingPage = () => {
           </Box>
 
           <VStack spacing={8} mt={12} align="center">
-            <Heading
-              fontSize={["3xl", "4xl"]}
-              fontWeight="bold"
-              color="#00C4B4"
-              fontFamily="DM Sans, sans-serif"
-            >
+            <Heading fontSize={["3xl", "4xl"]} fontWeight="bold" color="#00C4B4" fontFamily="DM Sans, sans-serif">
               Unlock Your Learning Potential
             </Heading>
             <Text fontSize={["lg", "xl"]} color="#CBD5E0" maxW="3xl" fontFamily="Inter, sans-serif" opacity={0.85}>
@@ -564,12 +574,7 @@ const LandingPage = () => {
         </MotionBox>
 
         {/* Footer */}
-        <Box
-          as="footer"
-          bg="rgba(10, 25, 47, 0.9)"
-          py={6}
-          borderTop="1px solid rgba(255, 255, 255, 0.1)"
-        >
+        <Box as="footer" bg="rgba(10, 25, 47, 0.9)" py={6} borderTop="1px solid rgba(255, 255, 255, 0.1)">
           <Container maxW="8xl">
             <Flex justify="center" align="center" gap={2}>
               <Text fontSize="sm" color="whiteAlpha.600" fontFamily="Inter, sans-serif">
@@ -580,8 +585,8 @@ const LandingPage = () => {
                 alt="ZOVX"
                 height="100px"
                 objectFit="contain"
-                filter="brightness(2) drop-shadow(0 0 10px rgba(0, 196, 180, 0.3))" // Lighten and add glow
-                _hover={{ filter: "brightness(2.5) drop-shadow(0 0 15px rgba(0, 196, 180, 0.5))" }} // Enhanced on hover
+                filter="brightness(2) drop-shadow(0 0 10px rgba(0, 196, 180, 0.3))"
+                _hover={{ filter: "brightness(2.5) drop-shadow(0 0 15px rgba(0, 196, 180, 0.5))" }}
               />
             </Flex>
           </Container>
