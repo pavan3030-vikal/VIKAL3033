@@ -31,7 +31,7 @@ import {
   FormControl,
   FormLabel,
   Textarea,
-  ImageProps, // Added for MotionImage typing
+  ImageProps,
 } from "@chakra-ui/react";
 import {
   ChevronDownIcon,
@@ -53,14 +53,13 @@ import {
   setPersistence,
   browserLocalPersistence,
 } from "firebase/auth";
-import { motion, MotionProps, Transition } from "framer-motion";
+import { motion, Transition } from "framer-motion";
 import { css } from "@emotion/react";
 import { useRouter } from "next/navigation";
 
 // Define MotionImage with proper typing
 const MotionImage = motion<ImageProps>(Image);
-
-// Define MotionBox with proper typing (optional, but for consistency)
+// Define MotionBox with minimal typing (Framer Motion handles Box props well by default)
 const MotionBox = motion(Box);
 
 interface ChatHistory {
@@ -796,7 +795,9 @@ const DashboardPage: React.FC = () => {
                   AI Tyari VIKAL - Ace Exams & Learn Smart
                 </Text>
                 <Text fontSize="sm" color="gray.400" textAlign="center">
-                  {localStorage.getItem("vikalPro") ? "Unlimited Chats (Pro)" : `Chats Left: ${3 - chatHistory.length}/3`}
+                  {typeof window !== "undefined" && localStorage.getItem("vikalPro")
+                    ? "Unlimited Chats (Pro)"
+                    : `Chats Left: ${3 - chatHistory.length}/3`}
                 </Text>
               </MotionBox>
 
