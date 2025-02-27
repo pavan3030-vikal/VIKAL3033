@@ -34,7 +34,7 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon, ArrowRightIcon, CopyIcon, CheckIcon, ExternalLinkIcon, InfoIcon, AddIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import ReactMarkdown from "react-markdown";
-import { auth } from "./lib/firebase";  // Correct relative path from src/app/dashboard/
+import { auth } from "../lib/firebase";  // Correct relative path from src/app/dashboard/
 import { signInWithPopup, GoogleAuthProvider, signOut, User, setPersistence, browserLocalPersistence } from "firebase/auth";
 import { motion, Transition } from "framer-motion";  // Added Transition import
 import { css } from "@emotion/react";
