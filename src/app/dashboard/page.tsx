@@ -34,9 +34,9 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon, ArrowRightIcon, CopyIcon, CheckIcon, ExternalLinkIcon, InfoIcon, AddIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import ReactMarkdown from "react-markdown";
-import { auth } from "../lib/firebase";  // Adjusted path assuming src/app structure
+import { auth } from "./lib/firebase";  // Correct relative path from src/app/dashboard/
 import { signInWithPopup, GoogleAuthProvider, signOut, User, setPersistence, browserLocalPersistence } from "firebase/auth";
-import { motion } from "framer-motion";
+import { motion, Transition } from "framer-motion";  // Added Transition import
 import { css } from "@emotion/react";
 import { useRouter } from "next/navigation";
 
@@ -58,7 +58,7 @@ interface ResponseData {
   examTips?: string;
 }
 
-const API_URL = "https://vikal-backend3030-production.up.railway.app";  // Updated for Railway
+const API_URL = "https://vikal-backend3030-production.up.railway.app";
 const RAZORPAY_LINK = "https://razorpay.com/payment-link/plink_Q0hzTfIX0l2sHx/test";
 
 const responseTextStyles = css`
@@ -209,7 +209,7 @@ const DashboardPage: React.FC = () => {
       const data = await res.json();
       console.log("API Response:", data);
       if (data.notes) {
-        const examTips = await call_openai();  // No args needed for mock
+        const examTips = await call_openai();
         setResponseData({
           notes: data.notes || "No notes provided.",
           flashcards: data.flashcards || [],
@@ -273,7 +273,7 @@ const DashboardPage: React.FC = () => {
     router.push(path);
   };
 
-  const call_openai = async () => {  // Removed unused params
+  const call_openai = async () => {
     return new Promise((resolve) => {
       setTimeout(() => resolve("Sample exam tips: 1. Focus on key concepts. 2. Practice steps. 3. Memorize formulas."), 500);
     }) as Promise<string>;
@@ -342,12 +342,7 @@ const DashboardPage: React.FC = () => {
             >
               VIKAL 🚀
             </Text>
-            <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color="gray.300"
-              fontWeight="medium"
-              px={4}
-            >
+            <Text fontSize={{ base: "lg", md: "xl" }} color="gray.300" fontWeight="medium" px={4}>
               Unleash Your Prep Power!
             </Text>
             <MotionBox whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -1013,14 +1008,10 @@ const DashboardPage: React.FC = () => {
                                 transformStyle: "preserve-3d",
                                 position: "relative",
                                 "&:hover > div": { transform: "rotateY(180deg)" },
+                                transition: "transform 0.6s",
                               }}
                             >
-                              <Box
-                                position="absolute"
-                                w="100%"
-                                h="100%"
-                                css={{ transformStyle: "preserve-3d", transition: "transform 0.6s" }}
-                              >
+                              <Box position="absolute" w="100%" h="100%" css={{ transformStyle: "preserve-3d" }}>
                                 <Box
                                   position="absolute"
                                   w="100%"
