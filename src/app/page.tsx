@@ -18,7 +18,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
-// Define MotionImage with explicit typing
+// Define Motion components using motion factory
 const MotionImage = motion<ImageProps>(Image);
 const MotionButton = motion(Button);
 const MotionBox = motion(Box);
@@ -170,10 +170,11 @@ const LandingPage = () => {
               maxW={["200px", "300px", "400px"]}
               mx="auto"
               mb={4}
-              variants={logoVariants}
               initial="hidden"
               animate="visible"
               whileHover="hover"
+              variants={logoVariants}
+              transition={{ duration: 0.3 }}
               _hover={{ filter: "drop-shadow(0 0 15px rgba(0, 196, 180, 0.5))" }}
             />
             <Heading
