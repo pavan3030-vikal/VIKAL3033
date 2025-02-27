@@ -36,7 +36,7 @@ import { ChevronDownIcon, ArrowRightIcon, CopyIcon, CheckIcon, ExternalLinkIcon,
 import ReactMarkdown from "react-markdown";
 import { auth } from "../lib/firebase";  // Correct relative path from src/app/dashboard/
 import { signInWithPopup, GoogleAuthProvider, signOut, User, setPersistence, browserLocalPersistence } from "firebase/auth";
-import { motion, Transition } from "framer-motion";  // Added Transition import
+import { motion, Transition } from "framer-motion";
 import { css } from "@emotion/react";
 import { useRouter } from "next/navigation";
 
@@ -352,7 +352,7 @@ const DashboardPage: React.FC = () => {
                 color="#0a0a0c"
                 rounded="full"
                 _hover={{ boxShadow: "0 0 20px rgba(255, 221, 87, 0.8)" }}
-                transition="all 0.3s"
+                transition={{ duration: 0.3 }}  // Fixed transition type
                 onClick={handleGoogleSignIn}
                 leftIcon={
                   <svg viewBox="0 0 24 24" width="24" height="24">
@@ -459,6 +459,7 @@ const DashboardPage: React.FC = () => {
               rounded="full"
               _hover={{ boxShadow: "0 0 20px rgba(255, 221, 87, 0.8)" }}
               onClick={handleAcceptTerms}
+              transition={{ duration: 0.3 }}  // Fixed transition type
             >
               Accept
             </Button>
@@ -495,7 +496,7 @@ const DashboardPage: React.FC = () => {
                 borderRadius="md"
                 p={2}
                 _hover={{ bg: "rgba(60, 60, 65, 0.8)", transform: "translateY(-2px)" }}
-                transition="all 0.2s"
+                transition={{ duration: 0.2 }}  // Fixed transition type
                 cursor="pointer"
                 onClick={() => handlePageTransition("/summarize")}
                 initial={{ opacity: 0 }}
@@ -519,7 +520,7 @@ const DashboardPage: React.FC = () => {
                     bg="rgba(40, 40, 45, 0.8)"
                     borderRadius="md"
                     _hover={{ bg: "rgba(60, 60, 65, 0.8)", transform: "translateY(-2px)" }}
-                    transition="all 0.2s"
+                    transition={{ duration: 0.2 }}  // Fixed transition type
                     cursor="pointer"
                     boxShadow="0 2px 8px rgba(0, 0, 0, 0.2)"
                     onClick={() => {
@@ -552,6 +553,7 @@ const DashboardPage: React.FC = () => {
                   rounded="full"
                   size="sm"
                   _hover={{ transform: "scale(1.03)" }}
+                  transition={{ duration: 0.3 }}  // Fixed transition type
                   onClick={handleSignOut}
                 >
                   Sign Out
@@ -608,7 +610,7 @@ const DashboardPage: React.FC = () => {
                       color="#0a0a0c"
                       rounded="full"
                       _hover={{ boxShadow: "0 0 25px rgba(255, 221, 87, 1)" }}
-                      transition="all 0.3s"
+                      transition={{ duration: 0.3 }}  // Fixed transition type
                       onClick={handleUpgradeToPro}
                     >
                       Upgrade to Pro
@@ -672,7 +674,7 @@ const DashboardPage: React.FC = () => {
                       color="#0a0a0c"
                       rounded="full"
                       _hover={{ boxShadow: "0 0 20px rgba(255, 221, 87, 0.8)" }}
-                      transition="all 0.3s"
+                      transition={{ duration: 0.3 }}  // Fixed transition type
                       onClick={handleUpgradeToPro}
                     >
                       Go Pro Now
@@ -698,6 +700,7 @@ const DashboardPage: React.FC = () => {
                       color="#0a0a0c"
                       rounded="full"
                       _hover={{ boxShadow: "0 0 20px rgba(255, 221, 87, 0.8)" }}
+                      transition={{ duration: 0.3 }}  // Fixed transition type
                       onClick={handleFeedbackSubmit}
                     >
                       Submit Feedback
@@ -787,6 +790,7 @@ const DashboardPage: React.FC = () => {
                       top="50%"
                       transform="translateY(-50%)"
                       _hover={{ transform: "translateY(-50%) scale(1.1)" }}
+                      transition={{ duration: 0.3 }}  // Fixed transition type
                       onClick={handleSearch}
                       aria-label={isSolveMode ? "Solve" : "Explain"}
                       size="md"
@@ -801,6 +805,7 @@ const DashboardPage: React.FC = () => {
                         color="white"
                         rightIcon={<ChevronDownIcon />}
                         _hover={{ bg: "rgba(70, 70, 75, 0.8)" }}
+                        transition={{ duration: 0.3 }}  // Fixed transition type
                         borderRadius="md"
                         size="md"
                       >
@@ -831,6 +836,7 @@ const DashboardPage: React.FC = () => {
                       color="white"
                       rightIcon={<ChevronDownIcon />}
                       _hover={{ bg: "rgba(70, 70, 75, 0.8)" }}
+                      transition={{ duration: 0.3 }}  // Fixed transition type
                       borderRadius="md"
                       size="md"
                     >
@@ -937,6 +943,7 @@ const DashboardPage: React.FC = () => {
                           variant="ghost"
                           color="#0a0a0c"
                           _hover={{ bg: "rgba(0, 0, 0, 0.1)" }}
+                          transition={{ duration: 0.3 }}  // Fixed transition type
                         />
                       </Tooltip>
                     </HStack>
