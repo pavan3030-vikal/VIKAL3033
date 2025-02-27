@@ -21,7 +21,6 @@ import {
   Flex,
   Link,
   Image,
-  ImageProps,
   Switch,
   Modal,
   ModalOverlay,
@@ -41,8 +40,8 @@ import { motion, Transition } from "framer-motion";
 import { css } from "@emotion/react";
 import { useRouter } from "next/navigation";
 
-const MotionBox = motion.create(Box);
-const MotionImage = motion<ImageProps>(Image);  // Create MotionImage by wrapping Chakra's Image
+// Define MotionImage correctly
+const MotionImage = motion(Image);
 
 interface ChatHistory {
   id: string;
@@ -79,6 +78,8 @@ const pageTransition: Transition = {
   duration: 0.5,
   ease: "easeInOut",
 };
+
+const MotionBox = motion(Box);
 
 const DashboardPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
