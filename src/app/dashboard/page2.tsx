@@ -537,13 +537,13 @@ const DashboardPage: React.FC = () => {
                 bg="rgba(40, 40, 45, 0.8)"
                 borderRadius="md"
                 p={2}
-                _hover={{ bg: "rgba(60, 60, 65, 0.8)", transform: "translateY(-2px)" }}
-                transition="all 0.2s"
+                _hover={{ bg: "rgba(60, 60, 65, 0.8)", transform: "translateY(-2px)", transition: "all 0.2s" }}
                 cursor="pointer"
                 onClick={() => handlePageTransition("/summarize")}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
               >
                 <HStack justify="space-between">
                   <Text fontSize="sm" color="#ffdd57">
@@ -566,8 +566,7 @@ const DashboardPage: React.FC = () => {
                     p={2}
                     bg="rgba(40, 40, 45, 0.8)"
                     borderRadius="md"
-                    _hover={{ bg: "rgba(60, 60, 65, 0.8)", transform: "translateY(-2px)" }}
-                    transition="all 0.2s"
+                    _hover={{ bg: "rgba(60, 60, 65, 0.8)", transform: "translateY(-2px)", transition: "all 0.2s" }}
                     cursor="pointer"
                     boxShadow="0 2px 8px rgba(0, 0, 0, 0.2)"
                     onClick={() => {
