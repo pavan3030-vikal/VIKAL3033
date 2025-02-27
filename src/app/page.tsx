@@ -13,12 +13,14 @@ import {
   Flex,
   ImageProps,
 } from "@chakra-ui/react";
+import { ButtonProps } from "@chakra-ui/button"; // Import ButtonProps
+import { BoxProps } from "@chakra-ui/layout"; // Import BoxProps
 import { ChevronRightIcon, InfoIcon } from "@chakra-ui/icons";
 import { motion, MotionProps } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
-// Define MotionImage with explicit typing combining ImageProps and MotionProps
+// Define Motion components with explicit typing combining Chakra props and MotionProps
 const MotionImage = motion<ImageProps & MotionProps>(Image);
 const MotionButton = motion<ButtonProps & MotionProps>(Button);
 const MotionBox = motion<BoxProps & MotionProps>(Box);
