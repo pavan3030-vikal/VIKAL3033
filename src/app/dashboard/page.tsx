@@ -31,17 +31,37 @@ import {
   FormControl,
   FormLabel,
   Textarea,
+  ImageProps, // Added for MotionImage typing
 } from "@chakra-ui/react";
-import { ChevronDownIcon, ArrowRightIcon, CopyIcon, CheckIcon, ExternalLinkIcon, InfoIcon, AddIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import {
+  ChevronDownIcon,
+  ArrowRightIcon,
+  CopyIcon,
+  CheckIcon,
+  ExternalLinkIcon,
+  InfoIcon,
+  AddIcon,
+  ChevronRightIcon,
+} from "@chakra-ui/icons";
 import ReactMarkdown from "react-markdown";
-import { auth } from "../lib/firebase";  // Correct path from src/app/dashboard/
-import { signInWithPopup, GoogleAuthProvider, signOut, User, setPersistence, browserLocalPersistence } from "firebase/auth";
-import { motion, Transition } from "framer-motion";
+import { auth } from "../lib/firebase";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  signOut,
+  User,
+  setPersistence,
+  browserLocalPersistence,
+} from "firebase/auth";
+import { motion, MotionProps, Transition } from "framer-motion";
 import { css } from "@emotion/react";
 import { useRouter } from "next/navigation";
 
-// Define MotionImage correctly
-const MotionImage = motion(Image);
+// Define MotionImage with proper typing
+const MotionImage = motion<ImageProps>(Image);
+
+// Define MotionBox with proper typing (optional, but for consistency)
+const MotionBox = motion(Box);
 
 interface ChatHistory {
   id: string;
@@ -78,8 +98,6 @@ const pageTransition: Transition = {
   duration: 0.5,
   ease: "easeInOut",
 };
-
-const MotionBox = motion(Box);
 
 const DashboardPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -242,7 +260,13 @@ const DashboardPage: React.FC = () => {
       }
     } catch (error) {
       console.error("Fetch error:", error);
-      toast({ title: "Error", description: (error as Error).message || "Unknown error", status: "error", duration: 3000, position: "top" });
+      toast({
+        title: "Error",
+        description: (error as Error).message || "Unknown error",
+        status: "error",
+        duration: 3000,
+        position: "top",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -277,9 +301,12 @@ const DashboardPage: React.FC = () => {
   };
 
   const call_openai = async () => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve("Sample exam tips: 1. Focus on key concepts. 2. Practice steps. 3. Memorize formulas."), 500);
-    }) as Promise<string>;
+    return new Promise<string>((resolve) => {
+      setTimeout(
+        () => resolve("Sample exam tips: 1. Focus on key concepts. 2. Practice steps. 3. Memorize formulas."),
+        500
+      );
+    });
   };
 
   const exams = ["UPSC", "GATE", "RRB"];
@@ -416,7 +443,16 @@ const DashboardPage: React.FC = () => {
       <style jsx global>{`
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
       `}</style>
-      <Box position="absolute" top={0} left={0} right={0} bottom={0} bg="rgba(255, 221, 87, 0.1)" filter="blur(150px)" opacity={0.3} />
+      <Box
+        position="absolute"
+        top={0}
+        left={0}
+        right={0}
+        bottom={0}
+        bg="rgba(255, 221, 87, 0.1)"
+        filter="blur(150px)"
+        opacity={0.3}
+      />
 
       <Modal isOpen={!termsAccepted && !!user} onClose={() => {}} isCentered closeOnOverlayClick={false}>
         <ModalOverlay />
@@ -432,19 +468,24 @@ const DashboardPage: React.FC = () => {
               Welcome to Vikal! By using our AI-powered study platform, you agree to these Terms.
               <br />
               <br />
-              <strong>1. AI-Generated Content</strong> – Vikal provides AI-generated study materials. While we strive for accuracy, users should verify information independently.
+              <strong>1. AI-Generated Content</strong> – Vikal provides AI-generated study materials. While we strive for
+              accuracy, users should verify information independently.
               <br />
               <br />
-              <strong>2. User Responsibilities</strong> – Use Vikal for lawful educational purposes. Do not misuse or distribute content for unethical activities.
+              <strong>2. User Responsibilities</strong> – Use Vikal for lawful educational purposes. Do not misuse or
+              distribute content for unethical activities.
               <br />
               <br />
-              <strong>3. Intellectual Property</strong> – All AI-generated content is owned by Vikal. Personal and educational use is allowed, but redistribution requires permission.
+              <strong>3. Intellectual Property</strong> – All AI-generated content is owned by Vikal. Personal and
+              educational use is allowed, but redistribution requires permission.
               <br />
               <br />
-              <strong>4. Limitation of Liability</strong> – We are not responsible for errors or damages resulting from the use of our content.
+              <strong>4. Limitation of Liability</strong> – We are not responsible for errors or damages resulting from
+              the use of our content.
               <br />
               <br />
-              <strong>5. Third-Party Links</strong> – We may provide external links, but we do not control or endorse third-party content.
+              <strong>5. Third-Party Links</strong> – We may provide external links, but we do not control or endorse
+              third-party content.
               <br />
               <br />
               <strong>6. Changes to Terms</strong> – We may update these Terms; continued use implies acceptance.
@@ -523,7 +564,12 @@ const DashboardPage: React.FC = () => {
                 Recent 📜
               </Text>
               {chatHistory.map((chat) => (
-                <MotionBox key={chat.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
+                <MotionBox
+                  key={chat.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4 }}
+                >
                   <Box
                     p={2}
                     bg="rgba(40, 40, 45, 0.8)"
@@ -622,7 +668,12 @@ const DashboardPage: React.FC = () => {
                       Upgrade to Pro
                     </Button>
                   </MotionBox>
-                  <Text fontSize="xs" color="gray.500" cursor="pointer" onClick={() => setShowTrialEndPopup(false)}>
+                  <Text
+                    fontSize="xs"
+                    color="gray.500"
+                    cursor="pointer"
+                    onClick={() => setShowTrialEndPopup(false)}
+                  >
                     Continue Free (Limited)
                   </Text>
                 </VStack>
@@ -732,7 +783,13 @@ const DashboardPage: React.FC = () => {
                     VIKAL
                   </Text>
                 </HStack>
-                <Text fontSize={fontSize} fontWeight="extrabold" textAlign="center" bgGradient="linear(to-r, white, #ffdd57)" bgClip="text">
+                <Text
+                  fontSize={fontSize}
+                  fontWeight="extrabold"
+                  textAlign="center"
+                  bgGradient="linear(to-r, white, #ffdd57)"
+                  bgClip="text"
+                >
                   VIKAL: Your AI Prep Buddy 🤓
                 </Text>
                 <Text fontSize="sm" color="gray.400" textAlign="center">
@@ -768,7 +825,9 @@ const DashboardPage: React.FC = () => {
                   <Box position="relative" w="full">
                     <Input
                       placeholder={
-                        isSolveMode ? "Enter your problem (e.g., Solve 2x + 3 = 7)" : "Type your topic (e.g., How does the internet work?)"
+                        isSolveMode
+                          ? "Enter your problem (e.g., Solve 2x + 3 = 7)"
+                          : "Type your topic (e.g., How does the internet work?)"
                       }
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
@@ -978,7 +1037,10 @@ const DashboardPage: React.FC = () => {
                     <MotionBox
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: responseData.examTips ? 0.4 : 0.2 }}
+                      transition={{
+                        duration: 0.5,
+                        delay: responseData.examTips ? 0.4 : 0.2,
+                      }}
                       bg="rgba(30, 30, 35, 0.9)"
                       backdropFilter="blur(12px)"
                       p={6}
@@ -1059,7 +1121,12 @@ const DashboardPage: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
                       duration: 0.5,
-                      delay: responseData.examTips && responseData.flashcards && !isSolveMode ? 0.6 : responseData.examTips || (responseData.flashcards && !isSolveMode) ? 0.4 : 0.2,
+                      delay:
+                        responseData.examTips && responseData.flashcards && !isSolveMode
+                          ? 0.6
+                          : responseData.examTips || (responseData.flashcards && !isSolveMode)
+                          ? 0.4
+                          : 0.2,
                     }}
                     bg="rgba(30, 30, 35, 0.9)"
                     backdropFilter="blur(12px)"
