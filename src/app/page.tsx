@@ -12,9 +12,9 @@ import {
   HStack,
   Flex,
   ImageProps,
+  ButtonProps,
+  BoxProps,
 } from "@chakra-ui/react";
-import { ButtonProps } from "@chakra-ui/button"; // Import ButtonProps
-import { BoxProps } from "@chakra-ui/layout"; // Import BoxProps
 import { ChevronRightIcon, InfoIcon } from "@chakra-ui/icons";
 import { motion, MotionProps } from "framer-motion";
 import { useRouter } from "next/navigation";
